@@ -1,12 +1,20 @@
+#Workflow name
 name: Shell Commands
 
+#Actions to trigger the workflow
 on: [push]
 
+#Jobs to be run
 jobs:
+  #Name of job
   run-shell-command:
+    #Machine to run the job
     runs-on: ubuntu-latest
+    #Steps of the job
     steps:
+      #Name of step
       - name: echo a string
+        #Step - can be CMD or Action
         run: echo "Hello World"
       - name: multiline script
         run: |
@@ -18,7 +26,7 @@ jobs:
           print
           (platform.processor())
         shell: python
-  run-windwos-commands:
+  run-windows-commands:
     runs-on: windows-latest
     needs: ["run-shell-command"]
     steps:
@@ -26,4 +34,10 @@ jobs:
         run: Get-Location
       - name: Directory Bash
         run: pwd
-        shell: bash 
+        shell: bash
+  create-release-notes:
+    uses:
+    with:
+      head-ref: # optional, default is HEAD
+      # Release note format
+    format: # optional, default is - {{subject}} by @{{author}}
