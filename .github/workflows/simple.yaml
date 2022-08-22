@@ -35,9 +35,3 @@ jobs:
       - name: Directory Bash
         run: pwd
         shell: bash
-  create-release-notes:
-    uses:
-    with:
-      head-ref: # optional, default is HEAD
-      # Release note format
-    format: # optional, default is - {{subject}} by @{{author}}
